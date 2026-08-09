@@ -1,0 +1,12 @@
+services:
+  pihole:
+    image: pihole/pihole:latest
+    ports: ["53:53/tcp", "53:53/udp", "8080:80/tcp"]
+    environment:
+      TZ: Australia/Brisbane
+      WEBPASSWORD: ${PIHOLE_PASSWORD}
+    restart: unless-stopped
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    ports: ["3001:3001"]
+    restart: unless-stopped
